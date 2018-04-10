@@ -1,0 +1,20 @@
+﻿@using AspMvcAngular1Integration.Models;
+@using AspMvcAngular1Integration.Helpers;
+
+@model TestMainModel 
+@{
+    ViewBag.Title = "Index";
+}<div ng-app="mainAppWeb">
+    <div ng-controller="testListCtrl as vm" ng-init='vm.actions.init(@Html.JsonFor(Model))'>
+        <h2>Index</h2>
+        <div ng-repeat="aItem in vm.data.current.List">
+            <div>
+                {{aItem.Name}}
+            </div>
+        </div>
+        <div ng-show="vm.data.isInEditMode">
+            <ng-form name="detailForm" @Html.RequestVerificationToken()>
+            </ng-form>
+        </div>
+</div>
+</div>
